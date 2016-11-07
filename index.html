@@ -261,19 +261,22 @@
         <!-- technology - "the stack" -->
 
         <!-- architecture -->
-        <section no-data-background="img/blueridgekitties_14705848177.jpg">
+        <section data-background="img/blueridgekitties_14705848177.jpg">
           <section>
             <h1 class="bar">Architecture</h1>
-            (we're talking about Bioreactor again here)
+            (we're talking about Bioreactor again here)<br>
             <figure>
               <img class="plain" src="img\dd-l0-overview.png">
               <figcaption>
-                <a href="diagrams/design-L0.png">Overview block diagram</a>
+                Analysis overview flowchart
+                [<a href="diagrams/design-L0.png">full-size view</a>]
               </figcaption>
             </figure>
           </section>
           <section>
-            <h2 class="bar">Input / validation / submission</h2>
+            <h2 class="bar">Input validation / submission</h2>
+            The analysis has has tunable parameters, some of which are queried from
+            REST endpoints on the server (noun-like and verb-like web APIs)
             <figure>
               <img class="plain" src="img\dd-l0-web-fe.png">
               <figcaption>Input, validation, and job submission</figcaption>
@@ -281,6 +284,9 @@
           </section>
           <section>
             <h2 class="bar">Retrieval and visualization</h2>
+            Results of the analysis can be displayed in tabular form,
+            downloaded, or visualized graphically as a
+            <a href="img/consensus_logo.jpg">sequence logo</a>.
             <figure>
               <img class="plain" src="img\dd-l0-results-and-retrieval.png">
               <figcaption>Job retrieval and visualization</figcaption>
@@ -292,10 +298,36 @@
         <section>
           <section>
             <h1 class="bar">Plumbing</h1>
+            <figure>
+              <a href="diagrams/design-L1.png">
+                <img class="plain" src="img\dd-l1-overview.png">
+              </a>
+              <figcaption>
+                Detailed flowchart of front-end functions: input, parameter
+                selection, and display of results
+                [<a href="diagrams/design-L1.png">full-size view</a>]
+              </figcaption>
+            </figure>
           </section>
 
           <section>
             <h2 class="bar">Plumbing (cont'd)</h2>
+            <figure>
+              <img class="plain" src="img\dd-l1-web-fe.png">
+              <figcaption>
+                Input and analysis parameter selection
+              </figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2 class="bar">Plumbing (cont'd)</h2>
+            <figure>
+              <img class="plain" src="img\dd-l1-web-fe.png">
+              <figcaption>
+                Input and analysis parameter selection
+              </figcaption>
+            </figure>
           </section>
 
           <!-- <section> -->
@@ -310,12 +342,37 @@
           <!--     <li class="fragment shrink">Refreshing results page until cluster job is done</li> -->
           <!--   </ul> -->
           <!-- </section> -->
-        </section>
-        <!-- plumbing -->
+
+        </section><!-- plumbing -->
 
         <!-- ui wireframes -->
         <section data-background="img/blueridgekitties_3836211195.jpg">
-          <h1 class="bar">User Interface</h1>
+
+          <section>
+            <h1 class="bar">Interface Design</h1>
+            <h3>User workflow overview:</h3>
+            <figure>
+              <a href="diagrams/input_form_wireframe.png">
+                <img style="max-height:400px" src="diagrams/app_workflow_wireframe.png">
+              </a>
+              <figcaption>
+                [<a href="diagrams/input_form_wireframe.png">full-size view</a>]
+              </figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h1 class="bar">User Interface</h1>
+            "First-launch" help, data input, and parameter selection UI:
+            <figure>
+              <img style="max-height:400px" class="plain"
+               src="diagrams/input_form_wireframe.png">
+              <figcaption>
+                [<a href="diagrams/input_form_wireframe.png">full-size view</a>]
+              </figcaption>
+            </figure>
+          </section>
+
         </section><!-- ui wireframes -->
 
         <section class="embed" data-state="embed" data-background-iframe="https://bioreactor:supersecret@ernstki.pythonanywhere.com">

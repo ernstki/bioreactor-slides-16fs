@@ -41,6 +41,10 @@ body {
   background: rgba(0,0,0,0.4);
 }
 
+/* figcaption {
+   font-size: large !important;
+} */
+
 .credit {
   position: fixed;
   max-height: 1.3em;
