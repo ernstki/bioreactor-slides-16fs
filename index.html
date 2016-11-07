@@ -1,11 +1,8 @@
 <!doctype html>
-<html lang="de">
-
+<html lang="en">
   <head>
     <meta charset="utf-8">
-
-    <title>Bioreactor: A nifty program</title>
-
+    <title>Bioreactor: A framework for web-based bioinformatics tools</title>
     <meta name="description" content="Bioreactor: A reusable framework for creating web-based bioinformatics analysis tools">
     <meta name="keywords" content="bioreactor cchmc weirauch lab weirauch lab">
     <meta name="keywords" content="functional genomics intersection analysis tool">
@@ -23,6 +20,9 @@
 
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/mine.css" id="theme">
+
+    <!-- GitHub Octicons: https://octicons.github.com/ -->
+    <link rel="stylesheet" href="vendor/octicons/octicons.css">
 
     <!-- Code syntax highlighting -->
     <link rel="stylesheet" href="lib/css/sunburst.css">
@@ -83,15 +83,15 @@
               </small>
             </p>
 
-            <p><small>
-              slides: <a href="https://ernstki.github.io/bioreactor-slides/">
-              ernstki.github.io/bioreactor-slides</a>
-            </small></p>
+            <p>
+              <a href="https://bit.ly/bioreactor-slides/">bit.ly/bioreactor-slides</a>
+            </p>
           </section>
         </section> <!-- intro slides -->
 
         <!-- project goal -->
-        <section data-background="img/1200px-Arabidopsis_thaliana_2.jpg">
+        <!-- <section data-background="img/1200px-Arabidopsis_thaliana_2.jpg"> -->
+        <section data-background="img/blueridgekitties_3823220154.jpg">
           <section>
             <h1 class="bar">Project Goals</h1>
             <p>The primary goal of the project is to create a <span
@@ -103,25 +103,29 @@
             benefit research into the genetic origins of a certain class of
             diseases by illuminating the role of <span class="hilite">viral
             DNA/protein interactions</span> with disease-associated regions of
-            the genome.</p>
+            the human genome.</p>
           </section>
           <section>
             <h2 class="bar">
               Designing a reusable solution
             </h2>
-            <blockquote>
-              "Instead of attacking isolated problems, I made the resolution
-              that I would never again solve an isolated problem except as
-              characteristic of a class."
-            </blockquote>
-            <p style="text-align:right">&mdash;<a
-              href="https://en.wikipedia.org/wiki/Richard_Hamming">Richard
-              Hamming</a> (1915 &ndash; 1998)</p>
+            <p>It's a common use case for bioinformaticicans to want to create web
+            interfaces for their tools, so that non-Unixy collaborators can
+            use them.</p>
+
+            <div class="fragment">
+              <blockquote>
+                "Instead of attacking isolated problems, I made the resolution
+                that I would never again solve an isolated problem except as
+                characteristic of a class."
+              </blockquote>
+              <p style="text-align:right;font-size:large;">&mdash;<a
+                href="https://en.wikipedia.org/wiki/Richard_Hamming">Richard
+                Hamming</a> (1915 &ndash; 1998)</p>
+            </div> <!-- fade-up -->
             <div class="credit">
-              <p>
-                source: <a href="http://www.paulgraham.com/hamming.html">Richard
-                  Hamming: You and Your Research</a>
-              </p>
+              <p>source: <a href="http://www.paulgraham.com/hamming.html">Richard
+                Hamming: You and Your Research</a></p>
             </div>
           </section>
           <section>
@@ -168,7 +172,8 @@
             </p>
             <p class="more-padding fragment">
               and how they relate to the origins of autoimmune diseases in
-              humans (<em>e.g., systemic lupus erythematosus</em>)
+              humans (<em>e.g., rheumatoid arthritis and systemic lupus
+              erythematosus</em>)
             </p>
             <p class="more-padding fragment"><small>
               <a href="https://www.cincinnatichildrens.org/research/divisions/a/genomics-etiology/labs/weirauch">We</a>
@@ -209,8 +214,9 @@
           </section>
         </section><!-- Background terminology -->
 
-        <!-- Problem description -->
-        <section data-background="img/sedeer_2768294025.jpg">
+        <!-- prior art -->
+        <!-- <section data-background="img/sedeer_2768294025.jpg"> -->
+        <section data-background="img/1200px-Arabidopsis_thaliana_2.jpg">
           <section>
             <h1 class="bar">Prior Art</h1>
             <h3 class="bar"><a href="https://cressint.cchmc.org">CressInt</a>:
@@ -242,12 +248,28 @@
             </blockquote>
 
             <p><small>
-              Source: <a href="https://cressint.cchmc.org/cressint/faq.php#what-is-cressint">CressInt
-              FAQ</a>
+              Source: <a href="https://cressint.cchmc.org/cressint/faq.php#what-is-cressint">CressInt FAQ</a>
             </small></p>
           </section>
+          <section>
+            <h2 class="bar">BED file format</h2>
+            <p class="">Tab-delimited format which describes locations within chromosomes
+            of regions of interest.</p>
+            <pre><code class="nohighlight" style="background:black">
 
-        </section> <!-- Problem Description -->
+    chr1    11873    14409    uc001aaa.3    0
+
+            </code></pre>
+            <p class="fragment">
+              Specification describes up to 6 columns (BED6):<br>
+              chr, start, stop, label, score, and strand (+/-)
+            </p>
+            <small>UCSC Genome Browser
+              <a href="http://www.genome.ucsc.edu/FAQ/FAQformat.html">FAQ entry
+                on BED file format</a>
+            </small>
+          </section>
+        </section> <!-- prior art -->
 
         <!-- technology - "the stack" -->
         <!-- <section data-background="img/blueridgekitties_14705848177.jpg"> -->
@@ -266,7 +288,10 @@
             <h1 class="bar">Architecture</h1>
             (we're talking about Bioreactor again here)<br>
             <figure>
-              <img class="plain" src="img\dd-l0-overview.png">
+              <a href="diagrams/design-L0.png">
+                <img class="plain" style="max-height:400px"
+                 src="img\dd-l0-overview.png">
+              </a>
               <figcaption>
                 Analysis overview flowchart
                 [<a href="diagrams/design-L0.png">full-size view</a>]
@@ -278,7 +303,8 @@
             The analysis has has tunable parameters, some of which are queried from
             REST endpoints on the server (noun-like and verb-like web APIs)
             <figure>
-              <img class="plain" src="img\dd-l0-web-fe.png">
+              <img class="plain" style="max-height:400px"
+               src="img\dd-l0-web-fe.png">
               <figcaption>Input, validation, and job submission</figcaption>
             </figure>
           </section>
@@ -288,19 +314,21 @@
             downloaded, or visualized graphically as a
             <a href="img/consensus_logo.jpg">sequence logo</a>.
             <figure>
-              <img class="plain" src="img\dd-l0-results-and-retrieval.png">
+              <img class="plain" style="max-height:400px"
+               src="img\dd-l0-results-and-retrieval.png">
               <figcaption>Job retrieval and visualization</figcaption>
             </figure>
           </section>
         </section> <!-- architecture -->
 
         <!-- plumbing -->
-        <section>
+        <section data-background="img/flickr71183136_7131296647.jpg">
           <section>
             <h1 class="bar">Plumbing</h1>
             <figure>
               <a href="diagrams/design-L1.png">
-                <img class="plain" src="img\dd-l1-overview.png">
+                <img class="plain" style="max-height:400px"
+                 src="img\dd-l1-overview.png">
               </a>
               <figcaption>
                 Detailed flowchart of front-end functions: input, parameter
@@ -312,20 +340,40 @@
 
           <section>
             <h2 class="bar">Plumbing (cont'd)</h2>
+            <h3>Input and analysis parameter selection</h3>
             <figure>
-              <img class="plain" src="img\dd-l1-web-fe.png">
-              <figcaption>
-                Input and analysis parameter selection
-              </figcaption>
+              <img class="plain" style="max-height:400px" src="img\dd-l1-web-fe.png">
+              <!-- <figcaption> -->
+              <!--   Input and analysis parameter selection -->
+              <!-- </figcaption> -->
             </figure>
           </section>
 
           <section>
             <h2 class="bar">Plumbing (cont'd)</h2>
+            <h3>Display, visualize, or download results</h3>
             <figure>
-              <img class="plain" src="img\dd-l1-web-fe.png">
+              <img class="plain" style="max-height:400px"
+               src="img\dd-l1-results-and-retrieval.png">
               <figcaption>
-                Input and analysis parameter selection
+                Output data is tab-delimted BED format, but may be useful to
+                visualize it as a
+                <a href="https://en.wikipedia.org/wiki/Sequence_logo">sequence logo</a>,
+                too.
+              </figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2 class="bar">REST APIs & cluster interface</h2>
+            (<strong>HPC</strong>: <em>high-performance computing</em>)
+            <figure>
+              <a href="diagrams/design-L2.png">
+                <img class="plain" style="max-height:400px;"
+                 src="img\dd-l2-overview.png">
+              </a>
+              <figcaption>
+                [<a href="diagrams/design-L2.png">full-size view</a>]
               </figcaption>
             </figure>
           </section>
@@ -353,7 +401,7 @@
             <h3>User workflow overview:</h3>
             <figure>
               <a href="diagrams/input_form_wireframe.png">
-                <img style="max-height:400px" src="diagrams/app_workflow_wireframe.png">
+                <img style="max-height:300px" src="diagrams/app_workflow_wireframe.png">
               </a>
               <figcaption>
                 [<a href="diagrams/input_form_wireframe.png">full-size view</a>]
@@ -365,8 +413,10 @@
             <h1 class="bar">User Interface</h1>
             "First-launch" help, data input, and parameter selection UI:
             <figure>
-              <img style="max-height:400px" class="plain"
-               src="diagrams/input_form_wireframe.png">
+              <a href="diagrams/input_form_wireframe.png">
+                <img style="max-height:300px" class="notplain"
+                src="diagrams/input_form_wireframe.png">
+              </a>
               <figcaption>
                 [<a href="diagrams/input_form_wireframe.png">full-size view</a>]
               </figcaption>
@@ -375,53 +425,157 @@
 
         </section><!-- ui wireframes -->
 
+        <!-- progress -->
+        <section data-background="img/inra_dist_22612133671.jpg">
+          <section>
+            <h1 class="bar">Progress so far&hellip;</h1>
+            <p>A big chunk of the effort was getting a common development
+            environment for the team to work on.</p>
+
+            <pre><code class="bash">
+            $ git clone git@github.uc.edu:Bioreactor/bioreactor-vm.git
+            $ vagrant box add bioreactor http://url.to/bioreactor.box
+            $ vagrant up
+            </code></pre>
+
+            <p>
+              We chose <a href="https://vagrantup.com">Vagrant</a> to manage the
+              VM environment, and <a href="https://www.ansible.com/">Ansible</a>
+              for automated software installation and configuration
+            </p>
+          </section>
+
+          <section>
+            <h2 class="bar">VM dev environment</h2>
+            <ul>
+              <li>
+                the VM "base box" is created from a Debian Jessie ISO using
+                <a href="https://github.com/jedi4ever/veewee">veewee</a>
+              </li>
+              <ul><li>base box includes only the bare minimum packages</li></ul>
+              <li class="fragment">
+                Vagrant creates a new VirtualBox VM from the base box
+              </li>
+              <li class="fragment">
+                and handles SSH key generation / exchange and port forwarding
+                to the host OS
+              </li>
+              <li class="fragment">
+                Ansible installs remaining packages for a base Python dev
+                environment
+              </li>
+              <li class="fragment">with Apache for serving static files</li>
+            </ul>
+            <blockquote class="fragment">
+              There's a public starter repository
+              <a href="https://github.com/QuickFixes/web-dev-with-friends">on GitHub</a>
+              if your team is in a similar situation.
+            </blockquote>
+          </section> <!-- vm dev environment -->
+
+          <section>
+            <h2 class="bar">Running Bioreactor</h2>
+
+            <p>Bioreactor is built with Python and the
+            <a href="http://flask.pocoo.org/">Flask web framework</a></p>
+
+            <p class="fragment">The automatic setup ("provisioning") process
+            for the VM clones the web application repository, but doesn't
+            actually launch it (yet)</p>
+
+            <h3 class="fragment">Here's how you'd do that:</h2>
+
+            <pre class="fragment"><code class="bash">
+            cd /path/to/where/you/cloned/bioreactor
+
+            # create a "virtual environment" for our dependencies
+            virtualenv venv
+            source venv/bin/activate
+
+            # install the dependencies using the virtualenv's copy of 'pip'
+            pip install -r requirements.txt
+
+            # Initialize the database tables and launch the Flask dev server
+            export FLASK_APP=bioreactor/bioreactor.py
+            flask initdb
+            flask run
+            </code></pre>
+          </section>
+        </section> <!-- progress -->
+
         <section class="embed" data-state="embed" data-background-iframe="https://bioreactor:supersecret@ernstki.pythonanywhere.com">
         </section>
 
-        <section data-background="img/inra_dist_22612133671.jpg">
+        <section data-background="img/inra_dist_22600912055.jpg">
+          <section>
+            <h1 class="bar">Responsibilities</h1>
+            <div style="text-align:left;padding-left:1.5em;">
+              <p>
+                <h3 class="nofragment">Brad</h3>
+                <ul>
+                  <li class="fragment highlight-blue">front-end design and
+                    interaction with APIs
+                  <li class="fragment highlight-blue"><em>stretch goal:
+                    web-based administrative back end</em>
+                </ul>
+              </p>
+
+              <p>
+                <h3 class="nofragment">Ben</h3>
+                <ul>
+                  <li class="fragment highlight-blue">deferred work queue and
+                    email notifications
+                  <li class="fragment highlight-blue"><em>stretch goal: logging
+                    and benchmarking</em>
+                </ul>
+              </p>
+            </div>
+          </section>
 
           <section>
-            <h1 class="bar">Progress so far&hellip;</h1>
-            <ul>
-              <li class="fragment">Life is tough for a brand new PI, in a new lab</li>
-              <li class="fragment">Automate</li>
-              <li class="fragment">Try to avoid shiny things</li>
-            </ul>
+            <h2 class="bar">Responsibilities (cont'd)</h2>
+            <div style="text-align:left;padding-left:1.5em;">
+              <p>
+                <h3 class="nofragment">Juanita</h3>
+                <ul>
+                  <li class="fragment highlight-blue">REST APIs for retrieving
+                    available datasets and job status
+                  <li class="fragment highlight-blue"><em>stretch goal: sequence logo
+                    visualizations</em>
+                </ul>
+              </p>
+
+              <p>
+                <h3 class="nofragment">Kevin</h3>
+                <ul>
+                  <li class="fragment highlight-blue">class-based
+                    <abbr title="High Performance Computing">HPC</abbr> cluster interface
+                  <li class="fragment highlight-blue"><em>stretch goal:
+                    command-line management (housekeeping) tools</em>
+                </ul>
+              </p>
+            </div>
           </section>
 
           <section>
             <h1 class="bar">Future Directions</h1>
             <ul>
-              <li class="fragment">Unit testing and uptime monitoring
-              </li>
-              <li class="fragment">Logging &amp; "analytics"</li>
-              <li class="fragment">Authentication, private saved jobs</li>
-              <li class="fragment">More efficient parallelization
-              </li>
-              <li class="fragment">Client / server architecture to handle
-                incoming requests</li>
-              <li class="fragment">Command-line management (housekeeping) tools</li>
+              <li class="fragment">
+                Sharing within a group of collaborators (w/ ability to leave
+                comments)
+              <li class="fragment">Unit testing and application health monitoring
+              <li class="fragment">Rate limiting / throttling based on user "class"
+              <li class="fragment">Improved logging &amp; user analytics
             </ul>
           </section>
+        </section> <!-- future directions -->
 
-          <section>
-            <h2 class="bar">Future Directions (cont'd)</h2>
-            <h3>Improved application architecture:<br>dispatch requests to a queue runner</h3>
-            <ul>
-              <li class="fragment">Rate limiting / throttling based on user
-                "class"</li>
-              <li class="fragment">Cluster balance monitoring</li>
-              <li class="fragment">REST API for monitoring job status</li>
-              <li class="fragment">Email notifications</li>
-            </ul>
-          </section>
-
-        </section> <!-- Lessons Learned -->
-
+        <!-- credits -->
         <section data-background="img/inra_dist_22726188208.jpg">
           <section>
             <h1 class="bar">Credits</h1>
-            <h3>The Team</h3>
+            <h3>The Weirauch Lab Team</h3>
+            The following people contributed to CressInt's development
             <ul>
               <li><a href="Matthew.Weirauch -at- cchmc.org">Dr. Matthew Weirauch</a>
                 - <em>Principal Investigator</em></li>
@@ -479,21 +633,20 @@
               </li>
             </ul>
           </section>
-
         </section> <!-- Credits -->
 
-        <section>
-          <section data-background="img/blueridgekitties_3823220154.jpg">
+        <!-- <section data-background="img/blueridgekitties_3823220154.jpg"> -->
+        <section data-background="img/large-cumulus-clouds-1.jpg">
+          <section>
             <h1 class="bar">THE END</h1>
             <h3>Thanks for your kind attention.</h3>
             <!-- <p><big><code>;)</code></big></p> -->
           </section>
           <section>
-            <h3>&hellip;and so here's a fluffy kitten:</h3>
+            <h3>&hellip;and here's a fluffy kitten:</h3>
             <img class="notplain" src="img\kitten.jpg">
           </section>
         </section>
-
 
       </div> <!--/.slides-->
 

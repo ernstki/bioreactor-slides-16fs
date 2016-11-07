@@ -38,7 +38,7 @@ body {
 .reveal .slides > section, .reveal .slides > section > section {
   line-height: 1.3;
   font-weight: inherit;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0,0,0,0.6);
 }
 
 /* figcaption {
@@ -50,7 +50,7 @@ body {
   max-height: 1.3em;
   bottom: -1.2em;;
   left: 0px;
-  background-color: black;
+  background: rgba(0,0,0,0.8);
 }
 
 .credit p {
