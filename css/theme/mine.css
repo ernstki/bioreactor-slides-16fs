@@ -31,10 +31,29 @@ body {
   background: #bee4fd;
   text-shadow: none; }
 
+/* .reveal .slides > section { */
+/*   padding: 20px; */
+/* } */
+
 .reveal .slides > section, .reveal .slides > section > section {
   line-height: 1.3;
   font-weight: inherit;
   background: rgba(0,0,0,0.4);
+}
+
+.credit {
+  position: fixed;
+  max-height: 1.3em;
+  bottom: -1.2em;;
+  left: 0px;
+  background-color: black;
+}
+
+.credit p {
+  font-size: medium;
+  /* I know, I know */
+  margin: 0.5em 1.3em !important;
+  padding: 0;
 }
 
 .reveal .slides > section.embed {
@@ -254,7 +273,15 @@ body {
 
 .reveal section img.plain {
   border: 0;
+  background: transparent;
   box-shadow: none; }
+
+.hilite {
+  /* source: https://css-tricks.com/overriding-the-default-text-selection-color-with-css/ */
+  /* color: #fff2a8; */ /* yellow */
+  color: #a8d1ff; /* blue */
+  font-weight: bold !important;
+}
 
 .reveal a img {
   -webkit-transition: all 0.15s linear;
