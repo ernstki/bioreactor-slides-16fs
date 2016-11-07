@@ -212,13 +212,25 @@
         <!-- Problem description -->
         <section data-background="img/sedeer_2768294025.jpg">
           <section>
-            <h1 class="bar">CressInt</h1>
-            <h3 class="bar">A genomics coordinate intersection tool
-              for plant biologists</h3>
+            <h1 class="bar">Prior Art</h1>
+            <h3 class="bar"><a href="https://cressint.cchmc.org">CressInt</a>:
+              a genomics coordinate intersection tool for plant biologists</h3>
             <ul>
-              <li class="fragment">Manuscript in Sep 2015 <em>Current Plant
-                Biology</em></li>
+              <li>accepts BED format coordinates or gene names (FASTA
+              input still in progress)</li>
+              <li>intersects input coordinates with several dozen data sets to
+              identify "regions of interest"</li>
             </ul>
+            <p>
+              <a href="http://www.sciencedirect.com/science/article/pii/S2214662815000110">Manuscript</a>
+            </p>
+          </section>
+
+          <section>
+            <h3 class="bar">Which looks like</h3>
+            <a href="https://cressint.cchmc.org">
+              <img style="" src="img/cressint.png">
+            </a>
           </section>
 
           <section>
@@ -245,15 +257,19 @@
           <!-- </div> -->
           <!-- <iframe src="web_app_architecture.txt"></iframe> -->
           <!-- </section> -->
-        </section><!-- technology - "the stack" -->
+        <!-- </section> -->
+        <!-- technology - "the stack" -->
 
         <!-- architecture -->
         <section no-data-background="img/blueridgekitties_14705848177.jpg">
           <section>
             <h1 class="bar">Architecture</h1>
+            (we're talking about Bioreactor again here)
             <figure>
               <img class="plain" src="img\dd-l0-overview.png">
-              <figcaption>Overview block diagram</figcaption>
+              <figcaption>
+                <a href="diagrams/design-L0.png">Overview block diagram</a>
+              </figcaption>
             </figure>
           </section>
           <section>
@@ -270,38 +286,30 @@
               <figcaption>Job retrieval and visualization</figcaption>
             </figure>
           </section>
-
         </section> <!-- architecture -->
 
         <!-- plumbing -->
         <section>
           <section>
             <h1 class="bar">Plumbing</h1>
-            <ul>
-              <li class="fragment">Form inputs are submitted to a Perl <a
-                href="https://en.wikipedia.org/wiki/Common_Gateway_Interface">CGI</a>
-              </li>
-              <li class="fragment">Form inputs validated</li>
-              <li class="fragment">Perl CGI submits job to HPC cluster on behalf
-                of the user</li>
-                <li class="fragment">Results page until job is done</li>
-              <li class="fragment">PHP + Twig templates again used to render
-                (tabular) results</li>
-            </ul>
           </section>
 
           <section>
-            <h1 class="bar">Let's Explore</h1>
-            <ul>
-              <li class="fragment shrink">Web browser loads a web page</li>
-              <li class="fragment shrink">Expand-o-sections (CSS animation)</li>
-              <li class="fragment shrink">JavaScript click event that sets a cookie</li>
-              <li class="fragment shrink">Live search for gene names</li>
-              <li class="fragment shrink">Ajax (async) job submission</li>
-              <li class="fragment shrink">Submitting a job to LSF (HPC cluster)</li>
-              <li class="fragment shrink">Refreshing results page until cluster job is done</li>
-            </ul>
+            <h2 class="bar">Plumbing (cont'd)</h2>
           </section>
+
+          <!-- <section> -->
+          <!--   <h1 class="bar">Let's Explore</h1> -->
+          <!--   <ul> -->
+          <!--     <li class="fragment shrink">Web browser loads a web page</li> -->
+          <!--     <li class="fragment shrink">Expand-o-sections (CSS animation)</li> -->
+          <!--     <li class="fragment shrink">JavaScript click event that sets a cookie</li> -->
+          <!--     <li class="fragment shrink">Live search for gene names</li> -->
+          <!--     <li class="fragment shrink">Ajax (async) job submission</li> -->
+          <!--     <li class="fragment shrink">Submitting a job to LSF (HPC cluster)</li> -->
+          <!--     <li class="fragment shrink">Refreshing results page until cluster job is done</li> -->
+          <!--   </ul> -->
+          <!-- </section> -->
         </section>
         <!-- plumbing -->
 
