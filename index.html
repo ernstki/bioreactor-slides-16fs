@@ -235,7 +235,7 @@
           <section>
             <h3 class="bar">Which looks like</h3>
             <a href="https://cressint.cchmc.org">
-              <img style="" src="img/cressint.png">
+              <img style="max-height:400px" src="img/cressint.png">
             </a>
           </section>
 
@@ -300,8 +300,11 @@
           </section>
           <section>
             <h2 class="bar">Input validation / submission</h2>
-            The analysis has has tunable parameters, some of which are queried from
-            REST endpoints on the server (noun-like and verb-like web APIs)
+            <p>
+              The analysis has has tunable parameters, some of which are
+              queried from REST endpoints on the server<br>(noun-like and
+              verb-like web APIs)
+            </p>
             <figure>
               <img class="plain" style="max-height:400px"
                src="img\dd-l0-web-fe.png">
@@ -310,9 +313,11 @@
           </section>
           <section>
             <h2 class="bar">Retrieval and visualization</h2>
-            Results of the analysis can be displayed in tabular form,
-            downloaded, or visualized graphically as a
-            <a href="img/consensus_logo.jpg">sequence logo</a>.
+            <p>
+              Results of the analysis can be displayed in tabular form,
+              downloaded, or visualized graphically as a
+              <a href="img/consensus_logo.jpg">sequence logo</a>.
+            </p>
             <figure>
               <img class="plain" style="max-height:400px"
                src="img\dd-l0-results-and-retrieval.png">
@@ -366,7 +371,10 @@
 
           <section>
             <h2 class="bar">REST APIs & cluster interface</h2>
-            (<strong>HPC</strong>: <em>high-performance computing</em>)
+
+            <!-- (<strong>HPC</strong>: <em>high-performance computing</em>) -->
+            (<strong><a href="https://en.wikipedia.org/wiki/Representational_state_transfer">REST</a></strong>:
+            <em>Representational State Transfer</em>)
             <figure>
               <a href="diagrams/design-L2.png">
                 <img class="plain" style="max-height:400px;"
@@ -398,7 +406,7 @@
 
           <section>
             <h1 class="bar">Interface Design</h1>
-            <h3>User workflow overview:</h3>
+            <h3>User workflow overview</h3>
             <figure>
               <a href="diagrams/app_workflow_wireframe.png">
                 <img style="max-height:300px" src="diagrams/app_workflow_wireframe.png">
@@ -411,7 +419,9 @@
 
           <section>
             <h1 class="bar">User Interface</h1>
-            "First-launch" help, data input, and parameter selection UI:
+            <h3>
+              "First-launch" help, data input, and parameter selection UI
+            </h3>
             <figure>
               <a href="diagrams/input_form_wireframe.png">
                 <img style="max-height:300px" class="notplain"
@@ -430,7 +440,7 @@
           <section>
             <h1 class="bar">Progress so far&hellip;</h1>
             <p>A big chunk of the effort was getting a common development
-            environment for the team to work on.</p>
+            environment for the team to work on</p>
 
             <pre><code class="bash">
             $ git clone git@github.uc.edu:Bioreactor/bioreactor-vm.git
@@ -452,17 +462,22 @@
                 the VM "base box" is created from a Debian Jessie ISO using
                 <a href="https://github.com/jedi4ever/veewee">veewee</a>
               </li>
-              <ul><li>base box includes only the bare minimum packages</li></ul>
+              <ul>
+                <li class="fragment">base box includes only
+                <a href="https://github.uc.edu/Bioreactor/bioreactor-vm/tree/master/definitions/bioreactor-jessie">essential</a>
+                packages</li>
+              </ul>
               <li class="fragment">
-                Vagrant creates a new VirtualBox VM from the base box
+                Vagrant creates a new VirtualBox VM from the <a href="https://www.vagrantup.com/docs/boxes/base.html">base box</a>
               </li>
               <li class="fragment">
-                and handles SSH key generation / exchange and port forwarding
+                and handles SSH key generation / exchange and
+                <a href="https://github.uc.edu/Bioreactor/bioreactor-vm/blob/master/Vagrantfile#L25">port forwarding</a>
                 to the host OS
               </li>
               <li class="fragment">
-                Ansible installs remaining packages for a base Python dev
-                environment
+                Ansible installs <a href="https://github.uc.edu/Bioreactor/bioreactor-vm/blob/master/provisioning/group_vars/all#L24">remaining packages</a>
+                for a base Python dev environment
               </li>
               <li class="fragment">with Apache for serving static files</li>
             </ul>
@@ -501,6 +516,14 @@
             flask run
             </code></pre>
           </section>
+
+          <section>
+            <h3>And here's what that looks like...</h3>
+            <p>
+              (with help from
+              <a href="https://www.pythonanywhere.com/">PythonAnywhere</a>)
+            </p>
+           </section>
         </section> <!-- progress -->
 
         <section class="embed" data-state="embed" data-background-iframe="https://bioreactor:supersecret@ernstki.pythonanywhere.com">
@@ -566,6 +589,10 @@
               <li class="fragment">Unit testing and application health monitoring
               <li class="fragment">Rate limiting / throttling based on user "class"
               <li class="fragment">Improved logging &amp; user analytics
+              <li class="fragment">Distribute Bioreactor as a Docker container
+              <li class="fragment">
+                (<em>Really</em> out there) semi-automated first-launch setup
+              </li>
             </ul>
           </section>
         </section> <!-- future directions -->
