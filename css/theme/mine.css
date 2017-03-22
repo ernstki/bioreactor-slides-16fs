@@ -1,8 +1,16 @@
 /*@import url(../../lib/font/source-sans-pro/source-sans-pro.css);*/
+
+@import url(../../lib/font/primus/primus.css);
+@import url('https://fonts.googleapis.com/css?family=Oswald:300,400');
+@import url('https://fonts.googleapis.com/css?family=Orbitron');
+
+/*
 @import url(../../lib/font/league-gothic/league-gothic.css);
+@import url(../lib/font/primus/primus.css);
 @import url(https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic);
 @import url(https://fonts.googleapis.com/css?family=Montserrat:700);
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700,400italic,700italic);
+*/
 /**
  * Black theme for reveal.js. This is the opposite of the 'white' theme.
  *
@@ -20,10 +28,10 @@ body {
 
 .reveal {
   /* font-family: 'Lato', sans-serif; */
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Oswald', sans-serif;
   /* font-size: 36px; */
   font-size: 30px;
-  font-weight: normal;
+  font-weight: 300;
   color: #fff; }
 
 ::selection {
@@ -75,7 +83,7 @@ body {
   margin: 0 0 20px 0;
   color: #fff;
   /* font-family: 'League Gothic', Impact, sans-serif; */
-  font-family: 'Montserrat', Impact, sans-serif;
+  font-family: 'Primus Regular', 'Orbitron', Impact, sans-serif;
   font-weight: normal;
   line-height: 1.2;
   /* letter-spacing: normal; */
@@ -91,7 +99,7 @@ body {
 }
 
 .reveal h1.bar {
-  background-color: rgba(170,170,170,0.5); /* #aaa */
+  /* background-color: rgba(170,170,170,0.5); */ /* #aaa */
 }
 
 .reveal h2 {
@@ -100,7 +108,7 @@ body {
 }
 
 .reveal h2.bar {
-  background-color: rgba(102,102,102,0.5);; /* #666 */
+  /* background-color: rgba(102,102,102,0.5); */ /* #666 */
 }
 
 .bar.mitumlaut {
@@ -195,13 +203,14 @@ body {
   margin: 20px auto;
   text-align: left;
   font-size: 0.55em;
-  font-family: monospace;
+  font-family: 'Input Condensed', 'Menlo', 'Consolas', monospace;
   line-height: 1.2em;
   word-wrap: break-word;
   box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.3); }
 
 .reveal code {
-  font-family: monospace; }
+  font-family: 'Input Condensed', 'Menlo', 'Consolas', monospace;
+}
 
 .reveal pre code {
   display: block;
